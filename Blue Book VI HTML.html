@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <script>
+    function onSuccess(xVI)
+    {
+      document.getElementById("book").disabled = false;
+      document.getElementById("book").focus();
+      if (xVI == "NOTFOUND")
+      {
+        xVI = "Book not found"
+        document.getElementById("prev").style.color = "red";
+        
+      }
+      else if (xVI == "ERROR")
+      {
+        xVI = ""
+        document.getElementById("prev").style.color = "red";
+        
+      }
+      else
+      {
+        document.getElementById("prev").style.color = "green";
+      }
+      if (xVI != "")
+      {
+        document.getElementById("prev").innerText = xVI + "\nAN: " + document.getElementById("id").innerText;
+      }
+      if (xVI == "Book not found")
+      {
+        //alert(x);
+      }
+      else if (xVI == "")
+      {
+        //alert("Invalid Entry");
+      }
+      
+    }
+    window.onload = function () {
+      document.getElementById("book").focus();
+      
+    }
+    window.onkeydown = function(eVI)
+    {
+      if (eVI.code == "Enter")
+      {
+        google.script.run.withSuccessHandler(onSuccess)
+          .makeAvailable_triggerVI(document.getElementById("book").value);
+        //document.getElementById("c").innerHTML = t;
+        document.getElementById("id").innerText = document.getElementById("book").value;
+        document.getElementById("book").value = "";
+        document.getElementById("book").disabled = true;
+        
+      }
+
+    }
+    //google.script.run.test();
+  </script>
+  <body>
+    <h1>
+      Scan books (VI form)
+
+    </h1>
+    <form>
+      <input type="number" id="book" placeholder="Book AN" style="height:30px;">
+      <br/>
+      <br/>
+      Or type the AN and press enter
+    </form>
+    <h2>Previous Book:</h2>
+    <h3 id="prev">-</h3>
+    <h3 id="id" hidden></h3>
+  </body>
+</html>
