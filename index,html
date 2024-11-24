@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LMS</title>
+    <base target="_top">
+  </head>
+  <body>
+    <h1>Welcome to LMS</h1>
+    <h2>This portal is to lookup a book</h2>
+    <h3>for taking out/returning books, use the google sheet</h3>
+    <form action="https://script.google.com/a/macros/parmiters.herts.sch.uk/s/AKfycbwjRlaxjmecB0ePiqSLCVm152MPmr2EPc3-ZApcd3Q/dev" target="_top" method="GET">
+      <input type="number" name="code" placeholder="Barcode">
+      <input type="hidden" name="page" value="1">
+      <input type="submit">
+    </form>
+    
+  </body>
+</html>
